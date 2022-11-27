@@ -1,8 +1,8 @@
 # BDNS
 
-[![Build Status](https://travis-ci.org/BDNSdomains/BDNS-contracts.svg?branch=master)](https://travis-ci.org/BDNSdomains/ens-contracts)
+[![Build Status](https://travis-ci.org/BDNSdomains/BDNS-contracts.svg?branch=master)](https://travis-ci.org/BDNSdomains/bdns-contracts)
 
-For documentation of the BDNS system, see [docs.BDNS.domains](https://docs.ens.domains/).
+For documentation of the BDNS system, see [docs.BDNS.domains](https://docs.bdns.domains/).
 
 ## npm package
 
@@ -32,11 +32,11 @@ import {
 
 ```
 // Registry
-import '@ensdomains/ens-contracts/contracts/registry/BDNS.sol';
-import '@ensdomains/BDNS-contracts/contracts/registry/ENSRegistry.sol';
-import '@ensdomains/BDNS-contracts/contracts/registry/ENSRegistryWithFallback.sol';
-import '@ensdomains/BDNS-contracts/contracts/registry/ReverseRegistrar.sol';
-import '@ensdomains/BDNS-contracts/contracts/registry/TestRegistrar.sol';
+import '@ensdomains/bdns-contracts/contracts/registry/BDNS.sol';
+import '@ensdomains/BDNS-contracts/contracts/registry/BDNSRegistry.sol';
+import '@ensdomains/BDNS-contracts/contracts/registry/BDNSRegistryWithFallback.sol';
+import '@bdnsdomains/BDNS-contracts/contracts/registry/ReverseRegistrar.sol';
+import '@bdnsdomains/BDNS-contracts/contracts/registry/TestRegistrar.sol';
 // EthRegistrar
 import '@BDNSdomains/BDNS-contracts/contracts/ethregistrar/BaseRegistrar.sol';
 import '@BDNSdomains/BDNS-contracts/contracts/ethregistrar/BaseRegistrarImplementation.sol';
@@ -52,26 +52,26 @@ import '@BDNSdomains/BDNS-contracts/contracts/resolvers/Resolver.sol';
 
 ##  Accessing to binary file.
 
-If your environment does not have compiler, you can access to the raw hardhat artifacts files at `node_modules/@ensdomains/ens-contracts/artifacts/contracts/${modName}/${contractName}.sol/${contractName}.json`
+If your environment does not have compiler, you can access to the raw hardhat artifacts files at `node_modules/@bdnsdomains/bdns-contracts/artifacts/contracts/${modName}/${contractName}.sol/${contractName}.json`
 
 
 ## Contracts
 
 ## Registry
 
-The ENS registry is the core contract that lies at the heart of ENS resolution. All ENS lookups start by querying the registry. The registry maintains a list of domains, recording the owner, resolver, and TTL for each, and allows the owner of a domain to make changes to that data. It also includes some generic registrars.
+The BDNS registry is the core contract that lies at the heart of BDNS resolution. All BDNS lookups start by querying the registry. The registry maintains a list of domains, recording the owner, resolver, and TTL for each, and allows the owner of a domain to make changes to that data. It also includes some generic registrars.
 
-### ENS.sol
+### BDNS.sol
 
-Interface of the ENS Registry.
+Interface of the BDNS Registry.
 
-### ENSRegistry
+### BDNSRegistry
 
-Implementation of the ENS Registry, the central contract used to look up resolvers and owners for domains.
+Implementation of the BDNS Registry, the central contract used to look up resolvers and owners for domains.
 
-### ENSRegistryWithFallback
+### BDNSRegistryWithFallback
 
-The new implementation of the ENS Registry after [the 2020 ENS Registry Migration](https://docs.ens.domains/ens-migration-february-2020/technical-description#new-ens-deployment).
+The new implementation of the BDNS Registry after [the 2020 BDNS Registry Migration](https://docs.bdns.domains/bdns-migration-february-2020/technical-description#new-BDNS-deployment).
 
 ### FIFSRegistrar
 
@@ -84,18 +84,18 @@ Implementation of the reverse registrar responsible for managing reverse resolut
 
 ### TestRegistrar
 
-Implementation of the `.test` registrar facilitates easy testing of ENS on the Ethereum test networks. Currently deployed on Ropsten network, it provides functionality to instantly claim a domain for test purposes, which expires 28 days after it was claimed.
+Implementation of the `.test` registrar facilitates easy testing of bdns on the Ethereum test networks. Currently deployed on Ropsten network, it provides functionality to instantly claim a domain for test purposes, which expires 28 days after it was claimed.
 
 
 ## EthRegistrar
 
-Implements an [ENS](https://ens.domains/) registrar intended for the .eth TLD.
+Implements an [BDNS](https://bdns.domains/) registrar intended for the .eth TLD.
 
-These contracts were audited by ConsenSys Diligence; the audit report is available [here](https://github.com/ConsenSys/ens-audit-report-2019-02).
+These contracts were audited by ConsenSys Diligence; the audit report is available [here](https://github.com/ConsenSys/bdns-audit-report-2019-02).
 
 ### BaseRegistrar
 
-BaseRegistrar is the contract that owns the TLD in the ENS registry. This contract implements a minimal set of functionality:
+BaseRegistrar is the contract that owns the TLD in the BDNS registry. This contract implements a minimal set of functionality:
 
  - The owner of the registrar may add and remove controllers.
  - Controllers may register new domains and extend the expiry of (renew) existing domains. They can not change the ownership or reduce the expiration time of existing domains.
